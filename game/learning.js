@@ -1,7 +1,9 @@
-if(document.cookie == "" || document.cookie == null){
+var parameters = location.search.substring(1).split("&");
+var temp = parameters[0].split("=");
+var userkey = temp[1];
+if(userkey == "" || userkey == null){
   window.location.href = "index.html";
 }
-var userkey = document.cookie;
 var color = ["#007bff","#28a745","#17a2b8","#ffc107","#dc3545","#343a40"];
 var bg_color = ["#b8daff","#c3e6cb","#bee5eb","#ffeeba","#f5c6cb","#c6c8ca"];
 var color_text = ["primary","success","info","warning","danger","dark"];
@@ -49,11 +51,11 @@ function setTable(data, allkey, used_test){
 }
 function goto_know(know_key){
   send_key = '"' + know_key + '"';
-  window.location.href = "knowledge.html?test=" + know_key;
+  window.location.href = "knowledge.html?key=" + userkey + "&test=" + know_key;
 }
 function logout(){
-  document.cookie = "";
-  location.reload();
+  userkey = "";
+  window.location.href = "learning.html?key=" + userkey;
 }
 function Back(){
   window.history.back();
