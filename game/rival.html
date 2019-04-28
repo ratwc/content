@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+    <script type="text/javascript" src="rival.js"></script>
+    <title></title>
+  </head>
+  <body onload="onload()">
+    <div class="container text-center" style="margin-top: 8%">
+      <h4>
+        <span class='badge badge-pill badge-success' style = 'font-size:30px;' id="town"></span> Town.
+      </h4><hr>
+      <div class="card mx-auto d-block spac-t-1">
+        <div class="show_level" id="show_name_rival" style="display: none;">
+          <div class="rounded list-group-item inspac-t-3 inspac-b-3">
+            <h5 class="card-title spac-b-1" id="name_rival"></h5>
+          </div>
+        </div>
+        <img class="card-img-top image rounded" id="rival_town" alt="" style="display: none;">
+        <div class="card-body">
+          <div class="spac-t-1 spac-b-1">
+            <h6 id="rival_money" class="float-left"></h6>
+            <h6 id="rival_shield" class="float-right"></h6>
+          </div><br>
+          <div class="" id="myAttack" style="display:none;">
+            <hr><a class="btn btn-outline-danger btn-block spac-b-1" role="button" onclick="attack_rival()" id="attack_rival">Attack</a>
+            <h6 id="attack" class=""></h6><hr>
+          </div>
+          <div class="spinner-border spac-t-5 spac-b-5" id="spin-rival" style="display:none;"></div>
+          <a class="btn btn-outline-warning btn-block" role="button" onclick="random_rival()" id="new_rival"></a>
+        </div>
+      </div>
+      <hr>
+      <a class="btn btn-outline-dark btn-block" role="button" onclick="Back()">Back</a>
+      <a class="btn btn-outline-dark btn-block" role="button" onclick="logout()">Logout</a>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var config = {
+      apiKey: "AIzaSyB3cQjoAqChnMLTknlAKbyRmSIAP0e5GUA",
+      authDomain: "pacetown-338c9.firebaseapp.com",
+      databaseURL: "https://pacetown-338c9.firebaseio.com",
+      projectId: "pacetown-338c9",
+      storageBucket: "pacetown-338c9.appspot.com",
+      messagingSenderId: "485186237356"
+    };
+    firebase.initializeApp(config);
+  </script>
+</html>

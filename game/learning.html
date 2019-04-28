@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+    <script type="text/javascript" src="learning.js"></script>
+    <title></title>
+  </head>
+  <body onload="onload()">
+    <div class="container text-center" style="margin-top: 8%">
+      <h4>
+        <span class='badge badge-pill badge-success' style = 'font-size:30px;' id="town"></span> Town.
+      </h4>
+      <hr size="30" style="margin-bottom:1%;">
+      <div class="">
+        <h1 class="display-4">Knowledge.</h1>
+      </div>
+      <hr size="30" style="margin-bottom:1%;">
+      <div class="">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Lessson</th>
+              <th scope="col">Subject</th>
+            </tr>
+          </thead>
+          <thead id="show_knowledge"></<thead>
+        </table>
+      </div>
+      <hr>
+      <a class="btn btn-outline-dark btn-block" role="button" onclick="Back()">Back</a>
+      <a class="btn btn-outline-dark btn-block" role="button" onclick="logout()">Logout</a>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var config = {
+      apiKey: "AIzaSyB3cQjoAqChnMLTknlAKbyRmSIAP0e5GUA",
+      authDomain: "pacetown-338c9.firebaseapp.com",
+      databaseURL: "https://pacetown-338c9.firebaseio.com",
+      projectId: "pacetown-338c9",
+      storageBucket: "pacetown-338c9.appspot.com",
+      messagingSenderId: "485186237356"
+    };
+    firebase.initializeApp(config);
+  </script>
+</html>

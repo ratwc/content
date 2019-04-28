@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+    <script type="text/javascript" src="knowledge.js"></script>
+    <title></title>
+  </head>
+  <body onload="onload()">
+    <div class="container text-center" style="margin-top: 8%">
+      <h4>
+        <span class='badge badge-pill badge-success' style = 'font-size:30px;' id="town"></span> Town.
+      </h4>
+      <hr size="30" style="margin-bottom:1%;">
+      <div class="">
+        <h1 class="display-4">Learning.</h1>
+      </div>
+      <hr size="30" class="spac-b-2">
+      <h5 id="title" class=""></h5>
+      <a class="btn btn-outline-dark btn-block spac-b-5 spac-t-5" role="button" onclick="Get_started()" id="get-started"><h3 class="white"><strong>Get started.</strong></h3></a>
+      <div class="alert alert-dark spac-t-5 spac-b-5" role="alert" id="token-reward" style="display: none;">
+      </div>
+      <div class="card spac-t-2" id="info-test-content">
+        <div class="know_img" id="show_content"></div>
+        <div class="spac-t-3 spac-b-3">
+          <div class="list-group" style="display: none;" id="choice">
+            <div class="reward">
+              <a onclick="send_answer(1)" class="list-group-item list-group-item-action" id="choice-bg-1"></a>
+              <a onclick="send_answer(2)" class="list-group-item list-group-item-action" id="choice-bg-2"></a>
+              <a onclick="send_answer(3)" class="list-group-item list-group-item-action" id="choice-bg-3"></a>
+              <a onclick="send_answer(4)" class="list-group-item list-group-item-action" id="choice-bg-4"></a>
+              <a onclick="comfirm_answer()" class="btn btn-outline btn-block spac-t-5" id="confirm" style="display:none;">Confirm Answer</a>
+              <div class="spinner-border spac-t-5" id="spin-check"></div>
+            </div>
+          </div>
+          <a onclick="change_page_previous()" class="btn btn-default spac-b-1 spac-t-1" id="control-p">Previous</a>
+          <a onclick="change_page_next()" class="btn btn-default spac-b-1 spac-t-1" id="control-n">Next</a>
+        </div>
+      </div>
+      <hr>
+      <a onclick="finish()" class="btn btn-outline-dark btn-block" id="finish" style="display:none;"><strong>Finish</strong></a>
+      <a class="btn btn-outline-dark btn-block" role="button" onclick="Back()" id="back">Back</a>
+      <a class="btn btn-outline-dark btn-block" role="button" onclick="logout()" id="logout">Logout</a>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var config = {
+      apiKey: "AIzaSyB3cQjoAqChnMLTknlAKbyRmSIAP0e5GUA",
+      authDomain: "pacetown-338c9.firebaseapp.com",
+      databaseURL: "https://pacetown-338c9.firebaseio.com",
+      projectId: "pacetown-338c9",
+      storageBucket: "pacetown-338c9.appspot.com",
+      messagingSenderId: "485186237356"
+    };
+    firebase.initializeApp(config);
+  </script>
+</html>

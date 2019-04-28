@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <div class="container text-center">
+      <img src="town.png" class="image mx-auto d-block spac-b-5 spac-t-5" alt="ERROR!!">
+      <!--<h1 class="spac-b-15">PACE <span class="badge badge-secondary form-control-lg">TOWN</span></h1>-->
+      <form class="">
+        <div class="form-group">
+          <div class="col-xs-2">
+            <input type="text" class="form-control spac-b-15" name="username" placeholder="username" id="username">
+            <input type="password"class="form-control spac-b-15" name="password" value="" placeholder="password" id="password">
+          </div>
+          <button type="button" class="btn btn-warning btn-block spac-b-15" onclick="checkAuth()">Play</button>
+        </div>
+      </form>
+      <div class="spinner-border text-success spac-b-10" style="display: none;" id="spin"></div>
+      <div class="alert alert-success spac-t-10" role="alert" id="success" style="display: none;">
+        <h4>Login Success</h4>
+      </div>
+      <div class="alert alert-danger spac-t-10" role="alert" id="warning" style="display: none;">
+        <h4>Username or Password incorrect!</h4>
+      </div>
+      <div class="alert alert-warning spac-t-10" role="alert" id="fill" style="display: none;">
+        <h4>Please fill the blank</h4>
+      </div>
+      <a class="btn btn-outline-dark btn-block" href="register.html" role="button">Register</a>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var config = {
+      apiKey: "AIzaSyB3cQjoAqChnMLTknlAKbyRmSIAP0e5GUA",
+      authDomain: "pacetown-338c9.firebaseapp.com",
+      databaseURL: "https://pacetown-338c9.firebaseio.com",
+      projectId: "pacetown-338c9",
+      storageBucket: "pacetown-338c9.appspot.com",
+      messagingSenderId: "485186237356"
+    };
+    firebase.initializeApp(config);
+  </script>
+</html>

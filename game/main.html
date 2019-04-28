@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <title></title>
+  </head>
+  <body onload="onload()">
+    <div class="container text-center" style="margin-top: 8%">
+      <h4>
+        <span class='badge badge-pill badge-success' style = 'font-size:30px;' id="town"></span> Town.
+      </h4><hr size="30" style="margin-bottom:1%;">
+      <div class="btn-group spac-b-1">
+        <button type="button" class="btn btn-primary" onclick="changecolor(1)"></button>
+        <button type="button" class="btn btn-success" onclick="changecolor(2)"></button>
+        <button type="button" class="btn btn-info" onclick="changecolor(3)"></button>
+        <button type="button" class="btn btn-warning" onclick="changecolor(4)"></button>
+        <button type="button" class="btn btn-danger" onclick="changecolor(5)"></button>
+        <button type="button" class="btn btn-dark" onclick="changecolor(6)"></button>
+      </div>
+      <div class="card mx-auto d-block spac-t-1">
+        <div class="show_level" id="show_level">
+          <div class="rounded list-group-item inspac-t-3 inspac-b-3">
+            <i class='fas fa-angle-left'></i>
+            <h5 class="card-title spac-b-1" id="level"></h5>
+            <i class='fas fa-angle-right'></i>
+          </div>
+        </div>
+        <img class="card-img-top image rounded" id="home-town" alt="">
+        <div class="card-body">
+          <a onclick="next_level()" class="btn btn-outline-warning btn-block btn-sm float-right spac-b-5" id="next"></a>
+          <br>
+          <a onclick="confirm_nextlevel()" class="btn btn-outline-warning btn-block" style="display:none;" id="confirm"><p>Click to confirm level up</p></a>
+          <a class="btn btn-outline-danger btn-block" style="display:none;" id="enough_money"><strong>Not enough money!</strong></a>
+          <div class="spac-t-1">
+            <h6 id="money" class="float-left"></h6>
+            <h6 id="shield" class="float-right"></h6>
+          </div><br><br><hr>
+          <div class="">
+            <h6 id="attack" class="float-left"></h6>
+            <h6 id="token" class="float-right"></h6>
+          </div><br><hr>
+          <a onclick="rival()" class="btn btn-block spac-t-10" style="" id="rival">Finding Rival <i class="fas fa-skull-crossbones"></i></a><hr>
+          <a onclick="Learning()" class="btn btn-outline-success spac-t-10" style=""><i class='fas fa-book'></i> Knowledge Town</a>
+          <a onclick="Getreward()" class="btn btn-outline-danger spac-t-10"><i class='fas fa-award'></i> Reward Town</a>
+        </div>
+        <div class="spinner-border spac-b-2" id="spin_reward" style="display: none;"></div>
+        <div class="alert alert-danger" role="alert" id="no_token" style="display: none;">
+          <h4>No token!</h4><h6>Get token by goto Knowledge Town.</h6>
+        </div>
+        <div id="show_reward"></div>
+        <div class="list-group" style="display: none;" id="reward_choice">
+          <li class="list-group-item"><i class='fas fa-angle-down'></i>  Select one color  <i class='fas fa-angle-down'></i></li>
+          <div class="reward">
+            <a onclick="random_reward()" class="list-group-item list-group-item-action list-group-item-primary"><p></p></a>
+            <a onclick="random_reward()" class="list-group-item list-group-item-action list-group-item-success"><p></p></a>
+            <a onclick="random_reward()" class="list-group-item list-group-item-action list-group-item-info"><p></p></a>
+            <a onclick="random_reward()" class="list-group-item list-group-item-action list-group-item-warning"><p></p></a>
+            <a onclick="random_reward()" class="list-group-item list-group-item-action list-group-item-danger"><p></p></a>
+            <a onclick="random_reward()" class="list-group-item list-group-item-action list-group-item-dark"><p></p></a>
+          </div>
+        </div>
+      </div>
+      <br>
+      <a class="btn btn-outline-dark btn-block" role="button" onclick="logout()">Logout</a>
+      <br>
+      <!--<div class="footer">
+        <h6>Copyright</h6>
+      </div>-->
+    </div>
+  </body>
+  <script type="text/javascript">
+    var config = {
+      apiKey: "AIzaSyB3cQjoAqChnMLTknlAKbyRmSIAP0e5GUA",
+      authDomain: "pacetown-338c9.firebaseapp.com",
+      databaseURL: "https://pacetown-338c9.firebaseio.com",
+      projectId: "pacetown-338c9",
+      storageBucket: "pacetown-338c9.appspot.com",
+      messagingSenderId: "485186237356"
+    };
+    firebase.initializeApp(config);
+  </script>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="register.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <div>
+      <button type="button" class="btn btn-outline-warning" onclick="goback()" style="margin: 5px;"><i class='fas fa-arrow-left'></i> Back</button>
+    </div>
+    <div class="container text-center" style="margin-top: 10%;">
+      <img src="register.png" class="image mx-auto d-block spac-b-5 spac-t-5" alt="ERROR!!">
+      <h2>register</h2>
+      <div class="form-group" style="margin-top: 8%;">
+        <div class="col-xs-2">
+          <input type="text" class="form-control spac-b-15" name="username" id="username" placeholder="username">
+          <input type="password"class="form-control spac-b-15" id="password" name="password" value="" placeholder="password">
+          <input type="password"class="form-control spac-b-15" id="repassword" name="repassword" value="" placeholder="re-password">
+          <button type="button" class="btn btn-info btn-block spac-b-15" onclick="saveData()">Register</button>
+        </div>
+      </div>
+      <div class="spinner-border text-success" style="display: none;" id="spin"></div>
+      <div class="alert alert-success" role="alert" id="success" style="display: none;">
+        <h4>Success</h4>
+      </div>
+      <div class="alert alert-warning" role="alert" id="warning" style="display: none;">
+        <h4>Password not match</h4>
+      </div>
+      <div class="alert alert-warning" role="alert" id="fill" style="display: none;">
+        <h4>Please fill the blank</h4>
+      </div>
+      <div class="alert alert-danger" role="alert" id="exist" style="display: none;">
+        <h4>Username is exist!</h4>
+      </div>
+    </div>
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyB3cQjoAqChnMLTknlAKbyRmSIAP0e5GUA",
+      authDomain: "pacetown-338c9.firebaseapp.com",
+      databaseURL: "https://pacetown-338c9.firebaseio.com",
+      projectId: "pacetown-338c9",
+      storageBucket: "pacetown-338c9.appspot.com",
+      messagingSenderId: "485186237356"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script type="text/javascript">
+    function goback(){
+      window.history.back();
+    }
+  </script>
+</html>
