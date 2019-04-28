@@ -182,7 +182,7 @@ async function confirm_nextlevel(){
   }
 }
 function Learning(){
-  window.location.href = "Learning.html";
+  window.location.href = "learning.html";
 }
 function rival(){
   if(money < cost){
