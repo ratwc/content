@@ -1,8 +1,3 @@
-var userkey = document.cookie;
-//console.log(userkey);
-if(userkey != "" && userkey != null){
-  window.location.href = "main.html";
-}
 async function checkAuth(){
     document.getElementById("warning").style.display = "none";
     document.getElementById("success").style.display = "none";
@@ -29,10 +24,10 @@ async function checkAuth(){
     else{
       document.getElementById("success").style.display = "block";
       userkey = allkey[complete];
-      //console.log(userkey);
-      document.cookie = userkey;
+      localStorage.setItem("userkey", userkey);
+      //document.cookie = userkey;
       setTimeout(function(){
-        window.location.href = "main.html";
+        window.location.href = "main.html?key=" + userkey;
       }, 800);
       //console.log(userkey);
     }
