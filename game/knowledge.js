@@ -1,7 +1,9 @@
-if(document.cookie == "" || document.cookie == null){
+var parameters = location.search.substring(1).split("&");
+var temp = parameters[0].split("=");
+var userkey = temp[1];
+if(userkey == "" || userkey == null){
   window.location.href = "index.html";
 }
-var userkey = document.cookie;
 var color = ["#007bff","#28a745","#17a2b8","#ffc107","#dc3545","#343a40"];
 var bg_color = ["#b8daff","#c3e6cb","#bee5eb","#ffeeba","#f5c6cb","#c6c8ca"];
 var color_text = ["primary","success","info","warning","danger","dark"];
@@ -26,7 +28,8 @@ async function onload(){
   document.body.style.background = bg_color[colors - 1];
   document.getElementById("info-test-content").style.display = "none";
   var url = location.href.match(/\?(.+)/)[1];
-  var destination = (url.split("="))[1];
+  var temp2 = window.location.href.split("=");
+  var destination = temp2[2];
   var know_ref = firebase.database().ref('Knowledge');
   await know_ref.once("value").then(function(snapshot){
     id = snapshot.child(destination).child("ID").val();
@@ -142,8 +145,8 @@ function comfirm_answer(){
   }, 800);
 }
 function logout(){
-  document.cookie = "";
-  location.reload();
+  userkey = "";
+  window.location.href = "Knowledge.html?key=" + userkey;
 }
 function Back(){
   window.history.back();
@@ -167,6 +170,6 @@ async function finish(){
     var ref = firebase.database().ref('User');
     token += sum_token;
     await ref.child(userkey).update({token: token, id_test: used});
-    window.location.href = "main.html";
+    window.location.href = "main.html?key=" + userkey;
   }, 2000);
 }
