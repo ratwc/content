@@ -132,7 +132,7 @@ async function random_reward(){
   }, 1000);// 1 coins 2 attack 3 shield 4 token 5 empty
 }
 /*----------------------------------- Formular Reward ----------------------------------------------------*/
-var weight = [1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,3,3,4,5,5];
+var weight = [1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,3,3,4,5,5];
 var weight_coins = [1,1,1,1,1,2,2,2,2,3,3,3,4,4,5];
 async function cal_reward(){
   var type = weight[Math.floor(Math.random()*weight.length)]; // 1 coins 2 attack 3 shield 4 token 5 empty
