@@ -55,7 +55,8 @@ async function onload(){
   document.getElementById("control-n").style.background = bg_color[colors - 1];
   for (var i = 0; i < useto.length; i++) {
     if(parseInt(useto[i]) == id){
-      sum_token = 1; reward_info = 0; reward_test = 0;
+      sum_token = reward_test;
+      reward_info = 0; reward_test = 0;
       break;
     }
   }
