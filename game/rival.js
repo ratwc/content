@@ -97,14 +97,30 @@ function attack_rival() {
   if(rival_shield != 0 && attack != 0){
     rival_shield--;
     attack--;
+    document.getElementById("show_rival").style.display = "block";
+    document.getElementById("show_rival").innerHTML = "<strong>" + username_rival + " Shield -1</strong>";
+    document.getElementById("show_rival").style.color = color[0];
+    document.getElementById("show_rival").style.background = bg_color[0];
+    document.getElementById("show_rival").style.borderColor = color[0];
+    setTimeout(function(){
+      document.getElementById("show_rival").style.display = "none";
+    }, 2000);
   }
   else if(rival_money != 0 && attack != 0){
     attack--;
-    var steal = Math.floor(Math.random()*20*rival_level + 1);
+    var steal = Math.floor(Math.random()*80*rival_level + rival_level);
     if(steal < rival_money) money += steal;
     else money += rival_money;
     rival_money -= steal;
     if(rival_money - steal < 0) rival_money = 0;
+    document.getElementById("show_rival").style.display = "block";
+    document.getElementById("show_rival").innerHTML = "<strong>" + username_rival + " Coins -" + steal + "</strong>";
+    document.getElementById("show_rival").style.color = color[3];
+    document.getElementById("show_rival").style.background = bg_color[3];
+    document.getElementById("show_rival").style.borderColor = color[3];
+    setTimeout(function(){
+      document.getElementById("show_rival").style.display = "none";
+    }, 2000);
   }
   update();
 }
