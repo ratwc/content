@@ -12,7 +12,7 @@ var username = "";
 var id = 0, subject = "", lesson = "", title = "", info = 0, answer_keep = "", answer = new Array(20), direct = "";
 var page = 1, choose_number = 0, sum_token = 0, reward_info = 0, reward_test = 0, count = 0;
 var save_answer = new Array(20);
-var useto = new Array(20), used = "";
+var useto = new Array(20), used = "", check_use = 0;
 async function onload(){
   var ref = firebase.database().ref('User');
   await ref.once("value").then(function(snapshot){
@@ -60,6 +60,7 @@ async function onload(){
     if(parseInt(useto[i]) == id){
       sum_token = reward_test;
       reward_info = 0; reward_test = 0;
+      check_use = 1;
       break;
     }
   }
@@ -164,8 +165,10 @@ async function finish(){
   document.getElementById("token-reward").style.borderColor = color[colors-1];
   document.getElementById("finish").style.display = "none ";
   document.getElementById("token-reward").innerHTML = "<h5>Congraturations <i class='fas fa-rocket'></i><br>Get " + sum_token + " token <i class='fas fa-dice'></i></h5>";
-  if(used == "") used = '' + id + '';
-  else used += "," + id;
+  if(check_use == 0){
+    if(used == "") used = '' + id + '';
+    else used += "," + id;
+  }
   setTimeout(async function(){
     var ref = firebase.database().ref('User');
     token += sum_token;
